@@ -27,7 +27,7 @@ GreenSafe est une plateforme de formation en ligne dédiée aux normes de HSE (H
 
 3. Exécuter le serveur en utilisant la commande "node server.js" dans le Back et dans le Front
 
-4. Accéder à l'application en ouvrant le navigateur et en visitant l'URL suivante :
+4. Accéder à l'application en ouvrant le navigateur et en visitant l'URL suivante : http://localhost:3000/Accueil.html
 
 ## Contributeurs
 
