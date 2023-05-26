@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sécurité incendie - Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #337ab7;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #337ab7;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p, ul, ol {
+      margin-bottom: 15px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: #337ab7;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #result {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Contenu de la page -->
+  <main>
+    <h1>Sécurité incendie - Quiz</h1>
+
+    <form id="quizForm">
+      <h2>Question 1</h2>
+      <p>Quelles sont les sources d'inflammation courantes dans un incendie ?</p>
+      <label>
+        <input type="radio" name="q1" value="a"> a) Les flammes nues
+      </label>
+      <label>
+        <input type="radio" name="q1" value="b"> b) Les appareils électriques défectueux
+      </label>
+      <label>
+        <input type="radio" name="q1" value="c"> c) Les produits chimiques inflammables
+      </label>
+
+      <h2>Question 2</h2>
+      <p>Quelles sont les mesures de prévention des incendies recommandées ?</p>
+      <label>
+        <input type="radio" name="q2" value="a"> a) L'installation d'équipements de détection et d'alarme incendie
+      </label>
+      <label>
+        <input type="radio" name="q2" value="b"> b) La formation du personnel aux procédures de sécurité incendie
+      </label>
+      <label>
+        <input type="radio" name="q2" value="c"> c) La mise en place de plans d'évacuation clairs
+      </label>
+
+      <h2>Question 3</h2>
+      <p>Quel est le rôle des détecteurs de fumée dans la sécurité incendie ?</p>
+      <label>
+        <input type="radio" name="q3" value="a"> a) Ils détectent les incendies à un stade précoce
+      </label>
+      <label>
+        <input type="radio" name="q3" value="b"> b) Ils alertent les autorités compétentes en cas d'incendie
+      </label>
+      <label>
+        <input type="radio" name="q3" value="c"> c) Ils éteignent automatiquement les incendies
+      </label>
+
+      <h2>Question 4</h2>
+      <p>Qu'est-ce qu'un système de sprinklers dans la lutte contre l'incendie ?</p>
+      <label>
+        <input type="radio" name="q4" value="a"> a) Un dispositif d'extinction d'incendie utilisant de l'eau sous pression
+      </label>
+      <label>
+        <input type="radio" name="q4" value="b"> b) Un équipement de protection individuelle contre le feu
+      </label>
+      <label>
+        <input type="radio" name="q4" value="c"> c) Un dispositif de sauvegarde de données
+      </label>
+
+      <h2>Question 5</h2>
+      <p>Qu'est-ce qu'une authentification à deux facteurs ?</p>
+      <label>
+        <input type="radio" name="q5" value="a"> a) Une méthode de vérification de l'identité qui utilise deux pièces d'identité différentes
+      </label>
+      <label>
+        <input type="radio" name="q5" value="b"> b) Une méthode de sécurité qui requiert à la fois un mot de passe et un code généré dynamiquement
+      </label>
+
+      <input type="submit" value="Soumettre">
+    </form>
+
+    <div id="result"></div>
+  </main>
+
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var score = 0;
+      var answers = {
+        q1: "c",
+        q2: "a",
+        q3: "a",
+        q4: "a",
+        q5: "b"
+      };
+      var formInputs = this.elements;
+      for (var i = 0; i < formInputs.length; i++) {
+        var input = formInputs[i];
+        if (input.type === "radio" && input.checked) {
+          if (answers.hasOwnProperty(input.name) && answers[input.name] === input.value) {
+            score++;
+          }
+        }
+      }
+      var result = document.getElementById("result");
+      result.innerHTML = "Votre score est : " + score + " / 5";
+      if (score === 5) {
+        const quizNumber = 3;
+        const token = localStorage.getItem('token');
+        fetch("http://localhost:3001/api/update-cours", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            token: token,
+            quizNumber: quizNumber
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // Mise à jour du tableau cours réussie
+            console.log("Tableau cours mis à jour avec succès !");
+          } else {
+            console.log("Échec de la mise à jour du tableau cours.");
+          }
+        })
+        .catch(error => {
+          console.error("Une erreur s'est produite :", error);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
