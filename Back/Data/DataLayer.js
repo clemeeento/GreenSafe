@@ -49,11 +49,24 @@ let dataLayer = {
             fs.writeFileSync(fichier, JSON.stringify(tableau), (error) => {
                 if(error) throw error;
             });
-          } 
+        } 
         else {
             console.log("fail");
         }
     },
+
+    getCours : function(email){
+        let tableau = JSON.parse(fs.readFileSync(fichier, "utf-8"));
+        const user = tableau.find(c => c.email == email);
+       
+        if (user) {
+            return user.cours;
+        } 
+        else {
+            console.log("fail");
+        }
+        
+    }
 };
 
 module.exports =dataLayer;

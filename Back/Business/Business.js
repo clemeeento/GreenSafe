@@ -16,8 +16,11 @@ const business = {
 
     updateCustomers :function (email,quizNumber){
         return dataL.updateCustomers(email,quizNumber);
-    }
+    },
 
+    getCours : function(email){
+        return dataL.getCours(email);
+    }
 
 };
 

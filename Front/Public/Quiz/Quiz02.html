@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Quiz de cybersécurité</title>
+    <title>Quiz sur la cybersécurité</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            background-color: #d3e4c9;
             color: #333;
             margin: 0;
             padding: 0;
         }
-
+        
         h1 {
             text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        h2, p {
+            margin: 10px 0;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
             padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+        }
+
+        input[type="button"] {
+            padding: 10px 20px;
             background-color: #337ab7;
             color: #fff;
+            border: none;
+            cursor: pointer;
         }
 
-        .quiz-container {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-
-        h2 {
-            color: #337ab7;
-            margin-bottom: 10px;
-        }
-
-        p {
-            margin-bottom: 20px;
-        }
-
-        .question {
-            margin-bottom: 10px;
-        }
-
-        .options label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .options input {
-            margin-right: 5px;
-        }
-
-        .submit-button {
-            text-align: center;
-        }
-
-        .result {
-            text-align: center;
+        #result {
             margin-top: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
         }
     </style>
     <script>
@@ -124,64 +112,42 @@
     </script>
 </head>
 <body>
-    <h1>Quiz de cybersécurité</h1>
+    <h1>Quiz sur la cybersécurité</h1>
 
-    <div class="quiz-container">
-        <div class="question">
-            <h2>Question 1</h2>
-            <p>Qu'est-ce que la cybersécurité ?</p>
-            <div class="options">
-                <label><input type="radio" name="q1" value="a"> a) La protection des données personnelles sur les réseaux sociaux.</label>
-                <label><input type="radio" name="q1" value="b"> b) L'ensemble des mesures prises pour protéger les systèmes informatiques et les données contre les attaques.</label>
-                <label><input type="radio" name="q1" value="c"> c) La création de mots de passe sécurisés.</label>
-            </div>
-        </div>
+    <form>
+        <h2>Question 1</h2>
+        <p>Qu'est-ce que la cybersécurité ?</p>
+        <input type="radio" name="q1" value="a"> a) La protection des données personnelles sur les réseaux sociaux.<br>
+        <input type="radio" name="q1" value="b"> b) L'ensemble des mesures prises pour protéger les systèmes informatiques et les données contre les attaques.<br>
+        <input type="radio" name="q1" value="c"> c) La création de mots de passe sécurisés.<br>
 
-        <div class="question">
-            <h2>Question 2</h2>
-            <p>Qu'est-ce qu'un pare-feu (firewall) ?</p>
-            <div class="options">
-                <label><input type="radio" name="q2" value="a"> a) Un logiciel antivirus.</label>
-                <label><input type="radio" name="q2" value="b"> b) Un moyen de protéger les informations sensibles.</label>
-                <label><input type="radio" name="q2" value="c"> c) Un dispositif de sécurité qui filtre le trafic réseau.</label>
-            </div>
-        </div>
+        <h2>Question 2</h2>
+        <p>Qu'est-ce qu'un pare-feu (firewall) ?</p>
+        <input type="radio" name="q2" value="a"> a) Un logiciel antivirus.<br>
+        <input type="radio" name="q2" value="b"> b) Un moyen de protéger les informations sensibles.<br>
+        <input type="radio" name="q2" value="c"> c) Un dispositif de sécurité qui filtre le trafic réseau.<br>
 
-        <div class="question">
-            <h2>Question 3</h2>
-            <p>Qu'est-ce qu'une attaque par phishing ?</p>
-            <div class="options">
-                <label><input type="radio" name="q3" value="a"> a) Une attaque visant à voler des informations sur des réseaux Wi-Fi publics.</label>
-                <label><input type="radio" name="q3" value="b"> b) Une technique d'ingénierie sociale utilisée pour tromper les utilisateurs et obtenir leurs informations confidentielles.</label>
-                <label><input type="radio" name="q3" value="c"> c) Une attaque par déni de service (DDoS) visant à rendre un site web indisponible.</label>
-            </div>
-        </div>
+        <h2>Question 3</h2>
+        <p>Qu'est-ce qu'une attaque par phishing ?</p>
+        <input type="radio" name="q3" value="a"> a) Une attaque visant à voler des informations sur des réseaux Wi-Fi publics.<br>
+        <input type="radio" name="q3" value="b"> b) Une technique d'ingénierie sociale utilisée pour tromper les utilisateurs et obtenir leurs informations confidentielles.<br>
+        <input type="radio" name="q3" value="c"> c) Une attaque par déni de service (DDoS) visant à rendre un site web indisponible.<br>
 
-        <div class="question">
-            <h2>Question 4</h2>
-            <p>Qu'est-ce qu'un logiciel malveillant (malware) ?</p>
-            <div class="options">
-                <label><input type="radio" name="q4" value="a"> a) Un programme informatique conçu pour endommager ou infiltrer un système sans autorisation.</label>
-                <label><input type="radio" name="q4" value="b"> b) Un programme permettant de chiffrer des fichiers et de demander une rançon pour les débloquer.</label>
-                <label><input type="radio" name="q4" value="c"> c) Un logiciel permettant de sécuriser les communications en ligne.</label>
-            </div>
-        </div>
+        <h2>Question 4</h2>
+        <p>Qu'est-ce qu'un logiciel malveillant (malware) ?</p>
+        <input type="radio" name="q4" value="a"> a) Un programme informatique conçu pour endommager ou infiltrer un système sans autorisation.<br>
+        <input type="radio" name="q4" value="b"> b) Un programme permettant de chiffrer des fichiers et de demander une rançon pour les débloquer.<br>
+        <input type="radio" name="q4" value="c"> c) Un logiciel permettant de sécuriser les communications en ligne.<br>
 
-        <div class="question">
-            <h2>Question 5</h2>
-            <p>Qu'est-ce qu'une sauvegarde de données ?</p>
-            <div class="options">
-                <label><input type="radio" name="q5" value="a"> a) La suppression définitive des données pour éviter toute récupération.</label>
-                <label><input type="radio" name="q5" value="b"> b) Le stockage de données sur un serveur externe pour économiser de l'espace de stockage.</label>
-                <label><input type="radio" name="q5" value="c"> c) La copie des données pour les protéger contre la perte en cas de défaillance ou de vol.</label>
-            </div>
-        </div>
+        <h2>Question 5</h2>
+        <p>Qu'est-ce qu'une sauvegarde de données ?</p>
+        <input type="radio" name="q5" value="a"> a) La suppression définitive des données pour éviter toute récupération.<br>
+        <input type="radio" name="q5" value="b"> b) Le stockage de données sur un serveur externe pour économiser de l'espace de stockage.<br>
+        <input type="radio" name="q5" value="c"> c) La copie des données pour les protéger contre la perte en cas de défaillance ou de vol.<br>
 
-        <div class="submit-button">
-            <input type="button" value="Soumettre" onclick="calculateScore()">
-        </div>
-    </div>
-
-    <div id="result" class="result"></div>
+        <br>
+        <input type="button" value="Soumettre" onclick="calculateScore()">
+        </form>
+    <div id="result" ></div>
 </body>
 </html>

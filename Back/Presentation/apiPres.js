@@ -57,11 +57,26 @@ const apiServ = {
             const quizNumber = req.body.quizNumber;
 
             const decodedToken = jwt.verify(token,'clesecrete');
-            const  email  = decodedToken.user;
+            const  email  = decodedToken.email;
             
-            const user = business.updateCustomers(email,quizNumber);
-            
+            business.updateCustomers(email,quizNumber);
 
+          });
+          
+          app.post("/api/get-cours", async function(req, res) {
+            const token = req.body.token;
+          
+            try {
+              const decodedToken = jwt.verify(token, 'clesecrete');
+              const email = decodedToken.email;
+          
+              // Obtenez le tableau de cours correspondant à l'email
+              const cours = business.getCours(email);
+          
+              res.json({ success: true, cours: cours });
+            } catch (error) {
+              res.json({ success: false, message: 'Token invalide' });
+            }
           });
           
 
